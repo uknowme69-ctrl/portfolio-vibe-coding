@@ -1,0 +1,161 @@
+/* SELF-NOTE: This file contains all the custom CSS for my website. */
+
+/* This is my main color palette. I can change these values to update the entire site's theme. */
+:root {
+    --bg-color: #1a1a1a;
+    --primary-accent: #d4af37;
+    --secondary-accent: #b8860b;
+    --text-color: #f5f5f5;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+/* This is the special font style for my name in the header. */
+.font-brand {
+    font-family: 'Righteous', sans-serif;
+}
+
+/* This container holds my chosen background image. */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* SELF-NOTE: I can edit my background image URL here as well. */
+    background-image: url('https://placehold.co/1920x1080/1a1a1a/f5f5f5?text=Your+Image+Here');
+    background-size: cover;
+    background-position: center;
+}
+
+/* This creates the dark gradient overlay on my background image. */
+.background-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 1));
+}
+
+/* This is the canvas for the interactive particle animation. */
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+/* Styling for the navigation links. */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+    will-change: transform;
+}
+.nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    background-color: var(--primary-accent);
+    transition: all 0.3s ease-in-out;
+}
+.nav-link:hover:after,
+.nav-link.active:after {
+    width: 100%;
+    left: 0;
+}
+
+/* Styling for my main call-to-action buttons. */
+.contact-btn {
+    background-color: var(--primary-accent);
+    color: #1a1a1a;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    will-change: transform;
+}
+.contact-btn:hover {
+    background-color: var(--secondary-accent);
+    transform: scale(1.05);
+}
+
+/* This class is used by my JavaScript to fade in sections as I scroll down. */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Styles for the vertical stacking project section. */
+#projects {
+    position: relative;
+}
+.project-card {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background-color: transparent;
+}
+.project-card-content {
+    background: rgba(0,0,0,0.3);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    max-width: 600px;
+}
+
+/* A professional touch: adding a subtle shadow to the main text for better readability. */
+#home h1, #home p {
+     text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Styles for the animated Skills section */
+.skill-item {
+    text-align: left;
+}
+.skill-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden; /* This is important for the animation */
+}
+.skill-bar {
+    width: 0; /* Starts at 0 width */
+    height: 100%;
+    background-color: var(--primary-accent);
+    border-radius: 4px;
+    transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth animation */
+}
+/* This class will be added by JavaScript to trigger the animation */
+.skill-bar.animated {
+    width: var(--skill-level);
+}
+
