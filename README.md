@@ -50,7 +50,7 @@ To run this project on your local machine, follow these simple steps:
 
 Clone the repository:
 
-git clone (https://github.com/uknowme69-ctrl/youknowme69-ctrl.github.io.git)
+git clone (https://github.com/uknowme69-ctrl/uknowme69-ctrl.github.io.git)
 
 Navigate to the project directory:
 
